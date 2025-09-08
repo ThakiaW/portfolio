@@ -1,0 +1,63 @@
+/* Body + page content layout */
+body {
+  background-color: #000000;
+  display: flex;
+  flex-direction: row;   /* side-by-side: text-div and images */
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: Inter, sans-serif;
+}
+
+/* Text styles */
+p {
+  line-height: 30px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #ffffff;
+  margin-top: 2px;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 36px;
+  color: #ffffff;
+}
+
+a {
+  color: #ffffff;
+}
+
+/* Match instructions: make text-div narrower */
+#text-div {
+  width: 400px;
+  margin-right: 100px;
+}
+
+/* Class selector for multiple images */
+.home-image {
+  height: 400px;
+}
+
+/* Task 1: Navigation bar (black bg, white text, flex horizontal, padded links) */
+.site-nav {
+  background-color: #000000; /* match body */
+  display: flex;             /* horizontal links */
+  gap: 12px;
+  padding: 10px 14px;        /* padding so links don't run into each other */
+  position: fixed;           /* keep nav at top without extra layout work */
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.site-nav a {
+  color: #ffffff;            /* white text */
+  text-decoration: none;
+  padding: 6px 10px;         /* link padding */
+}
+
+/* make space for fixed nav so content isn't under it */
+body > :not(.site-nav) {
+  margin-top: 56px;
+}
