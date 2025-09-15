@@ -1,33 +1,181 @@
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Home</title>
-    <link href=" styles.css" rel="stylesheet" />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-    </style>
-  </head>
-
-  <body>
-     <body>
-    <!-- Task 1: Navigation bar -->
-    <nav class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-    </nav>
-    <!-- Page content -->
-    <div id="text-div">
-      <h1>HELLO!</h1>
-      <p>
-        My name is Thakia Waksanga, and I am a student at Penn. I am passionate
-        about Internet and web systems. More about me
-        <a href="/about.html">here</a>.
-      </p>
-      <p>I enjoy fashion and social media.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Penn Course Search</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <div>1:23</div>
+    <div class="status-icons">
+      <div class="signal-bars"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+      <svg class="wifi-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.07 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+      </svg>
+      <div class="battery"><div class="battery-fill"></div></div>
     </div>
-    <img class="home-image" src=" assets/cool.png" />
-    <img class="home-image" src=" assets/gradient.png" />
+  </div>
 
-    
-  </body>
+  <!-- Header -->
+  <div class="header">
+    <div class="penn-logo"><div class="shield"></div> UPenn</div>
+    <a href="#" class="login-btn">🔐 Logged in as TW</a>
+  </div>
+
+  <!-- Search Banner -->
+  <div class="search-banner"><div class="search-banner-text">Search Classes</div></div>
+
+  <div class="main-content">
+    <!-- My Courses quick link -->
+    <a class="my-courses-btn" href="my-courses.html" aria-label="View my registered courses">
+      <svg class="cart-icon" viewBox="0 0 20 24" aria-hidden="true">
+        <path d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm10 0a2 2 0 1 0 .001 3.999A2 2 0 0 0 17 18zM6.3 6H21l-2 8H7.4l-1.1-5H4V7h1.6l.7 3h12.2l1-4H6.9l-.6-2H3V2h4l.7 3z" fill="currentColor"/>
+      </svg>
+      <span>My Registerd Courses</span>
+    </a>
+
+    <!-- Search Section -->
+    <div class="search-section">
+      <!-- Search submits to first.html -->
+      <form action="first.html" method="get">
+        <div class="form-group">
+          <select class="dropdown" name="term" aria-label="Term">
+            <option>Fall 2025</option>
+            <option>Spring 2025</option>
+            <option>Summer 2025</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <input class="text-input" type="text" name="q"
+                 placeholder="MKTG 2120" aria-label="Search">
+        </div>
+
+        <div class="form-group">
+          <select class="dropdown" name="method" aria-label="Instruction Method">
+            <option>Class Instruction Method</option>
+            <option>In-Person</option>
+            <option>Online</option>
+            <option>Hybrid</option>
+          </select>
+        </div>
+
+        <!-- Advanced Filters -->
+        <details class="advanced-filters" id="advancedFilters">
+          <summary>other Filters <span class="toggle-arrow">▼</span></summary>
+          <div class="filters-content">
+            <div class="filters-grid">
+              <div class="field">
+                <label class="field-label">Search</label>
+                <input type="text" class="pill-input" placeholder="Course code, title, or instructor" />
+              </div>
+              <div class="field">
+                <label class="field-label">Department</label>
+                <select class="pill-select">
+                  <option>All Departments</option>
+                  <option>Computer Science</option>
+                  <option>Mathematics</option>
+                  <option>Physics</option>
+                  <option>English</option>
+                  <option>Biology</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="field-label">Time Slot</label>
+                <select class="pill-select">
+                  <option>All Time</option>
+                  <option>Morning (8–12)</option>
+                  <option>Afternoon (12–5)</option>
+                  <option>Evening (5–9)</option>
+                  <option>Online/Async</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="field-label">Credits</label>
+                <select class="pill-select">
+                  <option>All Credits</option>
+                  <option>0.5</option>
+                  <option>1.0</option>
+                  <option>1.5</option>
+                  <option>2.0+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field availability-row">
+              <label class="field-label">Availability</label>
+              <select class="pill-select">
+                <option>All Courses</option>
+                <option>Open</option>
+                <option>Closed</option>
+                <option>Waitlist Available</option>
+              </select>
+            </div>
+
+            <button type="button" class="clear-filters-btn" onclick="(function(){
+              const root = document.querySelector('#advancedFilters .filters-content');
+              root.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
+              root.querySelectorAll('input[type=text]').forEach(i => i.value = '');
+            })()">Clear All Filters</button>
+          </div>
+        </details>
+
+        <!-- Checkboxes -->
+        <div class="checkbox-group">
+          <input type="checkbox" class="checkbox" id="online-programs" name="online-programs">
+          <label for="online-programs" class="checkbox-label">Find courses available to students in online programs</label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" class="checkbox" id="no-overlap" name="no-overlap">
+          <label for="no-overlap" class="checkbox-label">Don't overlap with primary cart selections</label>
+        </div>
+
+        <!-- Submit -->
+        <button class="search-btn" type="submit">
+          <span class="arrow-right">▶</span> SEARCH COURSES
+        </button>
+      </form>
+    </div>
+
+    <!-- Suggestions -->
+    <div class="section-card">
+      <div class="section-title">📚 Suggestions</div>
+      <a class="action-btn" href="#">EXPLORE PROGRAMS <span class="arrow-right">▶</span></a>
+      <a class="action-btn" href="#">DEGREE AUDIT &amp; ADVISING <span class="arrow-right">▶</span></a>
+    </div>
+
+    <!-- Carts -->
+    <div class="section-card">
+      <div class="section-title">🛒 Course Carts</div>
+      <a class="action-btn" href="#">PRIMARY CART <span class="arrow-right">▶</span></a>
+      <div class="form-group">
+        <select class="dropdown" aria-label="Select Cart" name="cart">
+          <option>Select a Cart...</option>
+          <option>Secondary Cart</option>
+          <option>Backup Cart</option>
+        </select>
+      </div>
+      <a class="action-btn" href="#">PRIMARY PLAN <span class="arrow-right">▶</span></a>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav" role="navigation" aria-label="App navigation">
+    <div class="nav-controls">
+      <button class="nav-btn" aria-label="Back" type="button">‹</button>
+      <button class="nav-btn" aria-label="Forward" type="button">›</button>
+      <button class="nav-btn" aria-label="Share" type="button">📤</button>
+      <button class="nav-btn" aria-label="Bookmarks" type="button">📖</button>
+      <button class="nav-btn" aria-label="Tabs" type="button">⧉</button>
+    </div>
+    <div class="address-bar" aria-label="Address bar">
+      <span>📱</span><span>courses.upenn.edu</span><span>🔄</span>
+    </div>
+    <div class="home-indicator"></div>
+  </div>
+</body>
 </html>
